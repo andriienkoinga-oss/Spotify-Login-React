@@ -1,0 +1,214 @@
+:root {
+  --background: #080011;
+  --spotify-green: #00df59;
+  --selection-blue: #168df0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+}
+
+.login-page {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--spotify-green);
+}
+
+.spotify-logo {
+  position: absolute;
+  top: clamp(24px, 5.3vw, 76px);
+  left: clamp(24px, 3.8vw, 55px);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: clamp(12px, 1.1vw, 17px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.spotify-mark {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--spotify-green);
+}
+
+.spotify-mark i {
+  position: absolute;
+  left: 4px;
+  width: 14px;
+  height: 5px;
+  border-top: 2px solid var(--background);
+  border-radius: 50%;
+  transform: rotate(7deg);
+}
+
+.spotify-mark i:nth-child(1) { top: 6px; }
+.spotify-mark i:nth-child(2) { top: 10px; width: 12px; }
+.spotify-mark i:nth-child(3) { top: 14px; width: 10px; }
+
+.login-content {
+  display: flex;
+  width: min(90vw, 900px);
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-1vh);
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(25px, 3.15vw, 46px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.3px;
+}
+
+.sign-in-label {
+  margin: clamp(25px, 3.2vw, 45px) 0 clamp(14px, 1.8vw, 25px);
+  font-size: clamp(15px, 1.4vw, 21px);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+.provider-picker {
+  display: flex;
+  gap: clamp(7px, 0.7vw, 11px);
+  padding: clamp(10px, 1vw, 14px) clamp(15px, 1.7vw, 25px);
+  border: 2px solid var(--spotify-green);
+  border-radius: 35px;
+}
+
+.social-button {
+  display: grid;
+  width: clamp(45px, 4.5vw, 65px);
+  height: clamp(45px, 4.5vw, 65px);
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 13px;
+  background: var(--spotify-green);
+  color: var(--background);
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+}
+
+.social-button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+.social-button.selected {
+  background: var(--selection-blue);
+}
+
+.social-button span {
+  display: block;
+  line-height: 1;
+}
+
+.apple-icon {
+  position: relative;
+  width: 24px;
+  height: 27px;
+  overflow: hidden;
+  border-radius: 48% 48% 45% 45%;
+  background: currentColor;
+  color: var(--background);
+  font-size: 0;
+}
+
+.apple-icon::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  width: 9px;
+  height: 10px;
+  border-radius: 100% 0;
+  background: currentColor;
+  transform: rotate(-25deg);
+}
+
+.apple-icon::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: -5px;
+  width: 10px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--spotify-green);
+}
+
+.selected .apple-icon::after {
+  background: var(--selection-blue);
+}
+
+.google-icon {
+  font-size: clamp(35px, 3.3vw, 48px);
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.x-icon {
+  font-size: clamp(35px, 3.4vw, 50px);
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .login-content {
+    width: calc(100% - 40px);
+  }
+
+  h1 {
+    max-width: 330px;
+    line-height: 1.12;
+  }
+
+  .provider-picker {
+    border-radius: 29px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .spotify-logo {
+    top: 18px;
+    left: 20px;
+  }
+
+  .login-content {
+    transform: none;
+  }
+
+  .sign-in-label {
+    margin-top: 18px;
+  }
+}
